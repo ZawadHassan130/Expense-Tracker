@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:expense_tracker/register.dart';
+import 'package:expense_tracker/screens/register.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_ce_flutter/hive_ce_flutter.dart';
 
 import 'firebase_options.dart';
 
@@ -10,6 +12,10 @@ Future <void> main() async {
   await Firebase.initializeApp(
     options : DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseFirestore.instance.settings = const Settings(
+    persistenceEnabled: true,
+  );
+  await Hive.initFlutter();
   runApp(DevicePreview(builder: ((context) => MyApp())));
 }
 
