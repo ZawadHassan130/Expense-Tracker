@@ -150,7 +150,7 @@ class _HomePageState extends State<HomePage> {
               style: const TextStyle(color: AppColors.textPrimary),
               decoration: const InputDecoration(
                 labelText: 'Note (optional)',
-                hintText: 'e.g. Diwali, Trip to Bangkok',
+                hintText: 'e.g. Eid, Trip to Afghanistan',
                 prefixIcon: Icon(
                   Icons.sticky_note_2_outlined,
                   color: AppColors.primary,
