@@ -1,0 +1,67 @@
+<svg width="900" height="300" viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22C55E"/>
+      <stop offset="50%" stop-color="#16A34A"/>
+      <stop offset="100%" stop-color="#15803D"/>
+    </linearGradient>
+
+    <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur1"/>
+      <feMerge>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="14" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+      </feMerge>
+    </filter>
+
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#16A34A" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#16A34A" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#15803D" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Circuit-style accent icon: rising bars fused with a pulse/track line -->
+  <g transform="translate(58,95)" filter="url(#neonGlow)">
+    <rect x="0" y="70" width="14" height="40" rx="4" fill="url(#textGrad)"/>
+    <rect x="22" y="50" width="14" height="60" rx="4" fill="url(#textGrad)"/>
+    <rect x="44" y="26" width="14" height="84" rx="4" fill="url(#textGrad)"/>
+    <polyline points="0,70 22,50 44,26 66,4" fill="none" stroke="#16A34A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="66" cy="4" r="7" fill="#16A34A"/>
+    <circle cx="66" cy="4" r="13" fill="none" stroke="#16A34A" stroke-width="2" opacity="0.5"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="150" y="150"
+        font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="66"
+        font-weight="800"
+        letter-spacing="2"
+        fill="url(#textGrad)"
+        filter="url(#softGlow)">EXPENSE</text>
+  <text x="150" y="150"
+        font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="66"
+        font-weight="800"
+        letter-spacing="2"
+        fill="url(#textGrad)">EXPENSE</text>
+
+  <text x="150" y="215"
+        font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="66"
+        font-weight="300"
+        letter-spacing="14"
+        fill="#15803D"
+        opacity="1">TRACKER</text>
+
+  <!-- Underline accent -->
+  <rect x="152" y="232" width="560" height="3" fill="url(#lineGrad)"/>
+
+</svg>

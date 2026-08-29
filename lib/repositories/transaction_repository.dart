@@ -48,7 +48,9 @@ class TransactionRepository {
   /// Starts mirroring Firestore changes into the local Hive cache. Call
   /// once when the date's page opens and cancel on close via [dispose].
   void startSync() {
-    debugPrint('[TransactionRepository] startSync: userId=$userId dateId=$dateId');
+    debugPrint(
+      '[TransactionRepository] startSync: userId=$userId dateId=$dateId',
+    );
     _subscription?.cancel();
     _subscription = _firestore.streamAll().listen(
       (remoteTransactions) async {
@@ -78,7 +80,9 @@ class TransactionRepository {
   }
 
   Future<void> dispose() async {
-    debugPrint('[TransactionRepository] dispose: userId=$userId dateId=$dateId');
+    debugPrint(
+      '[TransactionRepository] dispose: userId=$userId dateId=$dateId',
+    );
     await _subscription?.cancel();
     _subscription = null;
   }
@@ -106,7 +110,9 @@ class TransactionRepository {
     try {
       await _box.put(transaction.id, transaction);
       await _firestore.set(transaction.id, transaction);
-      debugPrint('[TransactionRepository] addTransaction: succeeded id=${transaction.id}');
+      debugPrint(
+        '[TransactionRepository] addTransaction: succeeded id=${transaction.id}',
+      );
       return transaction;
     } catch (e) {
       debugPrint('[TransactionRepository] addTransaction: failed - $e');
@@ -115,14 +121,20 @@ class TransactionRepository {
   }
 
   Future<void> updateTransaction(TransactionModel transaction) async {
-    debugPrint('[TransactionRepository] updateTransaction: id=${transaction.id}');
+    debugPrint(
+      '[TransactionRepository] updateTransaction: id=${transaction.id}',
+    );
     transaction.updatedAt = DateTime.now();
     try {
       await _box.put(transaction.id, transaction);
       await _firestore.set(transaction.id, transaction);
-      debugPrint('[TransactionRepository] updateTransaction: succeeded id=${transaction.id}');
+      debugPrint(
+        '[TransactionRepository] updateTransaction: succeeded id=${transaction.id}',
+      );
     } catch (e) {
-      debugPrint('[TransactionRepository] updateTransaction: failed id=${transaction.id} - $e');
+      debugPrint(
+        '[TransactionRepository] updateTransaction: failed id=${transaction.id} - $e',
+      );
       rethrow;
     }
   }
@@ -134,7 +146,9 @@ class TransactionRepository {
       await _firestore.delete(id);
       debugPrint('[TransactionRepository] deleteTransaction: succeeded id=$id');
     } catch (e) {
-      debugPrint('[TransactionRepository] deleteTransaction: failed id=$id - $e');
+      debugPrint(
+        '[TransactionRepository] deleteTransaction: failed id=$id - $e',
+      );
       rethrow;
     }
   }
