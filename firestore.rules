@@ -1,0 +1,13 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Data lives at users/{userId}/dates/{dateId}/transactions/{id}. Only
+    // the signed-in user matching {userId} may read or write anything
+    // under their own tree; everything else is denied by default.
+    match /users/{userId}/{document=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
